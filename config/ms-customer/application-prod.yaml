@@ -3,7 +3,7 @@ spring:
     name: ms-customer
   data:
     mongodb:
-      uri: mongodb://${MONGODB_USER}:${MONGODB_PASSWORD}@mongodb-prod:27017/ms_customer_prod?authSource=admin
+      uri: mongodb://admin:{cipher}192197c3bfcefc4c6d8fcf980d0ad2f2ee85ff9e22532e349c67d25e874abe8688f8bba85ef05cba715d2f4523cd6a54@mongodb-prod:27017/ms_customer_prod?authSource=admin
       auto-index-creation: true
   jackson:
     default-property-inclusion: non_null

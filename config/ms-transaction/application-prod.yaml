@@ -3,9 +3,14 @@ spring:
     name: ms-transaction
   data:
     mongodb:
-      uri: mongodb://${MONGODB_USER}:${MONGODB_PASSWORD}@mongodb-prod:27017/bootcamp_prod?authSource=admin
+      uri: mongodb://admin:{cipher}4f9c17ada64b584ecbb564ffca2f15afb82dae15fd2aac9d8ac6aa38bcd320fe5e2070d6e921acd378cfd1d1169a7be1@mongodb-prod:27017/bootcamp_prod?authSource=admin
   kafka:
     bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:kafka-prod:9092}
+    security:
+      protocol: ${KAFKA_SECURITY_PROTOCOL:SASL_SSL}
+    properties:
+      sasl.mechanism: PLAIN
+      sasl.jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule required username="${KAFKA_USERNAME:admin}" password="{cipher}4f9c17ada64b584ecbb564ffca2f15afb82dae15fd2aac9d8ac6aa38bcd320fe5e2070d6e921acd378cfd1d1169a7be1";
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer

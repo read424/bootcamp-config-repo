@@ -3,7 +3,7 @@ spring:
     name: ms-credits
   data:
     mongodb:
-      uri: mongodb://${MONGODB_USER}:${MONGODB_PASSWORD}@mongodb-prod:27017/ms_credits_prod?authSource=admin
+      uri: mongodb://admin:{cipher}86d968374834af94a02569507e970b33aa61974f692a24c3297ccbda05274fd7569dbef63016812c73959988822427e1@mongodb-prod:27017/ms_credits_prod?authSource=admin
       auto-index-creation: true
   webflux:
     base-path: /api

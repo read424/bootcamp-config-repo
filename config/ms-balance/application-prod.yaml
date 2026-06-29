@@ -3,7 +3,7 @@ spring:
     name: ms-balance
   data:
     mongodb:
-      uri: mongodb://${MONGODB_USER}:${MONGODB_PASSWORD}@mongodb-prod:27017/ms_balance_prod?authSource=admin
+      uri: mongodb://admin:{cipher}changeme@mongodb-prod:27017/ms_balance_prod?authSource=admin
       auto-index-creation: true
   webflux:
     base-path: /api
