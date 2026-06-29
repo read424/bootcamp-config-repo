@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: ms-credits
+  data:
+    mongodb:
+      uri: mongodb://${MONGODB_USER}:${MONGODB_PASSWORD}@mongodb-prod:27017/ms_credits_prod?authSource=admin
+      auto-index-creation: true
+  webflux:
+    base-path: /api
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+    time-zone: UTC
+
+server:
+  port: 8083
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URL:http://service-eureka:8761/eureka/}
+  instance:
+    preferIpAddress: true
+    lease-renewal-interval-in-seconds: 10
+    lease-expiration-duration-in-seconds: 30
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus,circuitbreakers,circuitbreaker-events
+  endpoint:
+    health:
+      show-details: always

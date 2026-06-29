@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: ms-accounts
+  webflux:
+    base-path: /
+  data:
+    mongodb:
+      uri: mongodb://${MONGODB_USER}:${MONGODB_PASSWORD}@mongodb-prod:27017/accounts_db_prod?authSource=admin
+
+server:
+  port: 8082
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URL:http://service-eureka:8761/eureka/}
+  instance:
+    preferIpAddress: true
+    lease-renewal-interval-in-seconds: 10
+    lease-expiration-duration-in-seconds: 30
+
+services:
+  customer:
+    url: ${SERVICE_CUSTOMER_URL:http://ms-customer:8081}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus,circuitbreakers,circuitbreakermetrics
+  endpoint:
+    health:
+      show-details: always
