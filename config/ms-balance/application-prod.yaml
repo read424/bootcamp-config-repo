@@ -3,22 +3,28 @@ spring:
     name: ms-balance
   data:
     mongodb:
-      uri: mongodb://admin:{cipher}changeme@mongodb-prod:27017/ms_balance_prod?authSource=admin
+      host: mongodb-balance
+      port: 27017
+      database: ms_balance_prod
+      authentication-database: admin
+      username: admin
+      password: '{cipher}e4cfe64713f2ff33acb683523b3149921690dbe7d4ba9cf261c83b5578cbc63dbe9e9c62f8f440638a7cd8ba8e8591c3'
       auto-index-creation: true
   webflux:
     base-path: /api
   jackson:
+    default-property-inclusion: non_null
     serialization:
       write-dates-as-timestamps: false
     time-zone: UTC
 
 server:
-  port: 8085
+  port: 8083
 
 eureka:
   client:
     service-url:
-      defaultZone: ${EUREKA_URL:http://service-eureka:8761/eureka/}
+      defaultZone: ${EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE:http://service-eureka:8761/eureka/}
   instance:
     preferIpAddress: true
     lease-renewal-interval-in-seconds: 10
