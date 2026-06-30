@@ -5,15 +5,20 @@ spring:
     base-path: /
   data:
     mongodb:
-      uri: mongodb://admin:{cipher}9bf3484c0b31bc544e04a5c128a39928141fe819109a0847857a8468e48491e34da39348011433a10abe9c215cb5971a@mongodb-prod:27017/accounts_db_prod?authSource=admin
-
+      host: mongodb-accounts
+      port: 27017
+      database: ms_accounts_prod
+      authentication-database: admin
+      username: admin
+      password: '{cipher}e4cfe64713f2ff33acb683523b3149921690dbe7d4ba9cf261c83b5578cbc63dbe9e9c62f8f440638a7cd8ba8e8591c3'
+      auto-index-creation: true
 server:
   port: 8082
 
 eureka:
   client:
     service-url:
-      defaultZone: ${EUREKA_URL:http://service-eureka:8761/eureka/}
+      defaultZone: ${EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE:http://service-eureka:8761/eureka/}
   instance:
     preferIpAddress: true
     lease-renewal-interval-in-seconds: 10
