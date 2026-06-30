@@ -3,7 +3,12 @@ spring:
     name: ms-customer
   data:
     mongodb:
-      uri: mongodb://admin:{cipher}dcb9bf2e80d0752a6567adebe12a0f4c8f8cdca112b1792ba231490b125232f5fe547604d02ebfa01cf4996315cb8fa6@mongodb-prod:27017/ms_customer_prod?authSource=admin
+      host: mongodb-prod
+      port: 27017
+      database: ms_customer_prod
+      authentication-database: admin
+      username: admin
+      password: '{cipher}dcb9bf2e80d0752a6567adebe12a0f4c8f8cdca112b1792ba231490b125232f5fe547604d02ebfa01cf4996315cb8fa6'
       auto-index-creation: true
   jackson:
     default-property-inclusion: non_null
