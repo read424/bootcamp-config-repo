@@ -3,14 +3,15 @@ spring:
     name: ms-credits
   data:
     mongodb:
-      uri: mongodb://admin:{cipher}86d968374834af94a02569507e970b33aa61974f692a24c3297ccbda05274fd7569dbef63016812c73959988822427e1@mongodb-prod:27017/ms_credits_prod?authSource=admin
+      host: mongodb-accounts
+      port: 27017
+      database: ms_accounts_prod
+      authentication-database: admin
+      username: admin
+      password: '{cipher}cdcef99b8702eb4995cc57c8c676ef312c5350afa0781800ea2820f5d8436797d40c219dc9e7410458bab0dc3cac1d18'
       auto-index-creation: true
   webflux:
-    base-path: /api
-  jackson:
-    serialization:
-      write-dates-as-timestamps: false
-    time-zone: UTC
+    base-path: /
 
 server:
   port: 8083
@@ -18,7 +19,7 @@ server:
 eureka:
   client:
     service-url:
-      defaultZone: ${EUREKA_URL:http://service-eureka:8761/eureka/}
+      defaultZone: ${EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE:http://service-eureka:8761/eureka/}
   instance:
     preferIpAddress: true
     lease-renewal-interval-in-seconds: 10
@@ -28,7 +29,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: health,info,metrics,prometheus,circuitbreakers,circuitbreaker-events
+        health,info,metrics,prometheus,circuitbreakers,circuitbreaker-events,retries,retry-events,rate-limiters,rate-limiter-events,time-limiters,time-limiter-events
   endpoint:
     health:
       show-details: always
