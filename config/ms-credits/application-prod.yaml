@@ -3,12 +3,12 @@ spring:
     name: ms-credits
   data:
     mongodb:
-      host: mongodb-accounts
+      host: mongodb-credits
       port: 27017
-      database: ms_accounts_prod
+      database: ms_credits_prod
       authentication-database: admin
       username: admin
-      password: '{cipher}cdcef99b8702eb4995cc57c8c676ef312c5350afa0781800ea2820f5d8436797d40c219dc9e7410458bab0dc3cac1d18'
+      password: '{cipher}97fc950e3f921c098f85893eff72caf15feb00d66bd360d4465d96aa45b17561300641769c288016e9ff5eaca46bac1e'
       auto-index-creation: true
   webflux:
     base-path: /
